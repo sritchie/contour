@@ -14,7 +14,7 @@ To get started, you'll need the following tools
 
 ### This project
 
-    git clone https://sritchie@github.com/sritchie/contour.git
+    git clone https://github.com/sritchie/contour.git
     cd contour
 
 ### Leiningen
