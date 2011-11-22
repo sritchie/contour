@@ -1,4 +1,5 @@
-(ns contour.util)
+(ns contour.util
+  (:require [clojure.string :as s]))
 
 ;; Thanks to mmcgrana!
 (defn clj->js
@@ -12,3 +13,6 @@
                                     (assoc m (clj->js k) (clj->js v))) {} x))
         (coll? x) (apply array (map clj->js x))
         :else x))
+
+(defn pathify [& pieces]
+  (s/join "/" pieces))

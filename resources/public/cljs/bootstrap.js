@@ -12849,6 +12849,143 @@ clojure.browser.repl.connect = function(a) {
     return a.style.display = "none"
   })
 };
+clojure.string = {};
+clojure.string.seq_reverse = function(a) {
+  return cljs.core.reduce.call(null, cljs.core.conj, cljs.core.List.EMPTY, a)
+};
+clojure.string.reverse = function(a) {
+  if(cljs.core.truth_(cljs.core._EQ_.call(null, a.length, 0))) {
+    return""
+  }else {
+    for(var b = new goog.string.StringBuffer, a = clojure.string.seq_reverse.call(null, cljs.core.seq.call(null, a.split("")));;) {
+      if(cljs.core.truth_(a)) {
+        b.append(cljs.core.first.call(null, a)), a = cljs.core.next.call(null, a)
+      }else {
+        break
+      }
+    }
+    return b.toString()
+  }
+};
+clojure.string.replace = function(a, b, c) {
+  if(cljs.core.truth_(cljs.core.string_QMARK_.call(null, b))) {
+    return a.replace(RegExp(goog.string.regExpEscape.call(null, b), "g"), c)
+  }else {
+    if(cljs.core.truth_(b.hasOwnProperty("source"))) {
+      return a.replace(RegExp(b.source, "g"), c)
+    }else {
+      if(cljs.core.truth_("\ufdd0'else")) {
+        throw cljs.core.str.call(null, "Invalid match arg: ", b);
+      }else {
+        return null
+      }
+    }
+  }
+};
+clojure.string.replace_first = function(a, b, c) {
+  return a.replace(b, c)
+};
+clojure.string.join = function() {
+  var a = null;
+  return function(a, c) {
+    switch(arguments.length) {
+      case 1:
+        return cljs.core.apply.call(null, cljs.core.str, a);
+      case 2:
+        return cljs.core.apply.call(null, cljs.core.str, cljs.core.interpose.call(null, a, c))
+    }
+    throw"Invalid arity: " + arguments.length;
+  }
+}();
+clojure.string.upper_case = function(a) {
+  return a.toUpperCase()
+};
+clojure.string.lower_case = function(a) {
+  return a.toLowerCase()
+};
+clojure.string.capitalize = function(a) {
+  return cljs.core.truth_(cljs.core._LT_.call(null, cljs.core.count.call(null, a), 2)) ? clojure.string.upper_case.call(null, a) : cljs.core.str.call(null, clojure.string.upper_case.call(null, cljs.core.subs.call(null, a, 0, 1)), clojure.string.lower_case.call(null, cljs.core.subs.call(null, a, 1)))
+};
+clojure.string.split = function() {
+  var a = null;
+  return function(a, c, d) {
+    switch(arguments.length) {
+      case 2:
+        return cljs.core.vec.call(null, cljs.core.str.call(null, a).split(c));
+      case 3:
+        var e;
+        a: {
+          if(cljs.core.truth_(cljs.core._LT_.call(null, d, 1))) {
+            e = cljs.core.vec.call(null, cljs.core.str.call(null, a).split(c))
+          }else {
+            for(var f = a, g = d, h = cljs.core.Vector.fromArray([]);;) {
+              if(cljs.core.truth_(cljs.core._EQ_.call(null, g, 1))) {
+                e = cljs.core.conj.call(null, h, f);
+                break a
+              }else {
+                var i = cljs.core.re_find.call(null, c, f);
+                if(cljs.core.truth_(i)) {
+                  var j = i, i = f.indexOf(j), j = f.substring(cljs.core._PLUS_.call(null, i, cljs.core.count.call(null, j))), g = cljs.core.dec.call(null, g), h = cljs.core.conj.call(null, h, f.substring(0, i)), f = j
+                }else {
+                  e = cljs.core.conj.call(null, h, f);
+                  break a
+                }
+              }
+            }
+          }
+        }
+        return e
+    }
+    throw"Invalid arity: " + arguments.length;
+  }
+}();
+clojure.string.split_lines = function(a) {
+  return clojure.string.split.call(null, a, /\n|\r\n/)
+};
+clojure.string.trim = function(a) {
+  return goog.string.trim.call(null, a)
+};
+clojure.string.triml = function(a) {
+  return goog.string.trimLeft.call(null, a)
+};
+clojure.string.trimr = function(a) {
+  return goog.string.trimRight.call(null, a)
+};
+clojure.string.trim_newline = function(a) {
+  for(var b = a.length;;) {
+    if(cljs.core.truth_(cljs.core.zero_QMARK_.call(null, b))) {
+      return""
+    }else {
+      var c = cljs.core.get.call(null, a, cljs.core.dec.call(null, b));
+      if(cljs.core.truth_(function() {
+        var a = cljs.core._EQ_.call(null, c, "\n");
+        return cljs.core.truth_(a) ? a : cljs.core._EQ_.call(null, c, "\r")
+      }())) {
+        b = cljs.core.dec.call(null, b)
+      }else {
+        return a.substring(0, b)
+      }
+    }
+  }
+};
+clojure.string.blank_QMARK_ = function(a) {
+  var b = cljs.core.str.call(null, a);
+  return cljs.core.truth_(function() {
+    var a = cljs.core.not.call(null, b);
+    return cljs.core.truth_(a) ? a : (a = cljs.core._EQ_.call(null, "", b), cljs.core.truth_(a) ? a : cljs.core.re_matches.call(null, /\s+/, b))
+  }()) ? !0 : !1
+};
+clojure.string.escape = function(a, b) {
+  for(var c = new goog.string.StringBuffer, d = a.length, e = 0;;) {
+    if(cljs.core.truth_(cljs.core._EQ_.call(null, d, e))) {
+      return c.toString()
+    }else {
+      var f = a.charAt(e), g = cljs.core.get.call(null, b, f);
+      cljs.core.truth_(g) ? c.append(cljs.core.str.call(null, g)) : c.append(f);
+      e = cljs.core.inc.call(null, e)
+    }
+  }
+};
 var contour = {util:{}};
 contour.util.clj__GT_js = function clj__GT_js(b) {
   return cljs.core.truth_(cljs.core.string_QMARK_.call(null, b)) ? b : cljs.core.truth_(cljs.core.keyword_QMARK_.call(null, b)) ? cljs.core.name.call(null, b) : cljs.core.truth_(cljs.core.map_QMARK_.call(null, b)) ? cljs.core.reduce.call(null, function(b, d) {
@@ -12856,17 +12993,65 @@ contour.util.clj__GT_js = function clj__GT_js(b) {
     return cljs.core.assoc.call(null, b, clj__GT_js.call(null, e), clj__GT_js.call(null, f))
   }, cljs.core.ObjMap.fromObject([], {}), b).strobj : cljs.core.truth_(cljs.core.coll_QMARK_.call(null, b)) ? cljs.core.apply.call(null, cljs.core.array, cljs.core.map.call(null, clj__GT_js, b)) : cljs.core.truth_("\ufdd0'else") ? b : null
 };
+contour.util.pathify = function() {
+  var a = function(a) {
+    var c = null;
+    goog.isDef(a) && (c = cljs.core.array_seq(Array.prototype.slice.call(arguments, 0), 0));
+    return clojure.string.join.call(null, "/", c)
+  };
+  a.cljs$lang$maxFixedArity = 0;
+  a.cljs$lang$applyTo = function(a) {
+    a = cljs.core.seq(a);
+    return clojure.string.join.call(null, "/", a)
+  };
+  return a
+}();
 contour.repl = {};
 clojure.browser.repl.connect.call(null, "http://localhost:9000/repl");
 contour.mapview = {};
-contour.mapview.default_opts = cljs.core.ObjMap.fromObject(["\ufdd0'zoom", "\ufdd0'mapTypeId", "\ufdd0'center"], {"\ufdd0'zoom":8, "\ufdd0'mapTypeId":google.maps.MapTypeId.ROADMAP, "\ufdd0'center":new google.maps.LatLng(-34.397, 150.644)});
-contour.mapview.init_map = function(a) {
-  var b = contour.util.clj__GT_js.call(null, contour.mapview.default_opts);
-  return new google.maps.Map(a, b)
+contour.mapview.iucn_root = "http://184.73.201.235/blue";
+contour.mapview.species_range_root = "https://eighty.cartodb.com/tiles/mol_cody";
+contour.mapview.cell_towers_root = "https://sciencehackday-10.cartodb.com/tiles/tower_locations";
+contour.mapview.forma_root = "http://formatiles.s3.amazonaws.com/tiles/forma071/forma071";
+contour.mapview.carto_tiler_fn = function(a) {
+  if(!cljs.core.truth_(cljs.core.not_EQ_.call(null, "/", cljs.core.last.call(null, a)))) {
+    throw cljs.core.str.call(null, "Assert failed: ", cljs.core.pr_str.call(null, cljs.core.list("\ufdd1'not=", "/", cljs.core.list("\ufdd1'last", "\ufdd1'root"))));
+  }
+  return function(b, c) {
+    return cljs.core.str.call(null, contour.util.pathify.call(null, a, c, b.x, b.y), ".png")
+  }
+};
+contour.mapview.cell_towers_tile_url = contour.mapview.carto_tiler_fn.call(null, contour.mapview.cell_towers_root);
+contour.mapview.species_range_tile_url = contour.mapview.carto_tiler_fn.call(null, contour.mapview.species_range_root);
+contour.mapview.iucn_tile_url = function(a, b) {
+  return contour.util.pathify.call(null, contour.mapview.iucn_root, b, a.x, a.y)
+};
+contour.mapview.forma_tile_url = function(a, b) {
+  var c = cljs.core.dec.call(null, Math.pow.call(null, 2, b));
+  return cljs.core.str.call(null, contour.util.pathify.call(null, contour.mapview.forma_root, b, Math.abs.call(null, a.x), cljs.core._.call(null, c, a.y)), ".png")
+};
+contour.mapview.overlay_defaults = cljs.core.ObjMap.fromObject(["\ufdd0'minZ", "\ufdd0'maxZ", "\ufdd0'tileSize"], {"\ufdd0'minZ":3, "\ufdd0'maxZ":10, "\ufdd0'tileSize":new google.maps.Size(256, 256)});
+contour.mapview.mk_overlay = function(a, b, c) {
+  a = contour.util.clj__GT_js.call(null, cljs.core.merge.call(null, contour.mapview.overlay_defaults, cljs.core.ObjMap.fromObject(["\ufdd0'name", "\ufdd0'opacity", "\ufdd0'getTileUrl"], {"\ufdd0'name":a, "\ufdd0'opacity":c, "\ufdd0'getTileUrl":b})));
+  return new google.maps.ImageMapType(a)
+};
+contour.mapview.map_opts = cljs.core.ObjMap.fromObject(["\ufdd0'styles", "\ufdd0'zoom", "\ufdd0'mapTypeId", "\ufdd0'center"], {"\ufdd0'styles":cljs.core.Vector.fromArray([cljs.core.ObjMap.fromObject(["\ufdd0'stylers"], {"\ufdd0'stylers":cljs.core.Vector.fromArray([cljs.core.ObjMap.fromObject(["\ufdd0'visibility"], {"\ufdd0'visibility":"on"}), cljs.core.ObjMap.fromObject(["\ufdd0'lightness"], {"\ufdd0'lightness":80})])})]), "\ufdd0'zoom":3, "\ufdd0'mapTypeId":google.maps.MapTypeId.ROADMAP, "\ufdd0'center":new google.maps.LatLng(29, 
+66)});
+contour.mapview.init_map = function(a, b) {
+  for(var c = contour.util.clj__GT_js.call(null, contour.mapview.map_opts), c = new google.maps.Map(a, c), d = cljs.core.seq.call(null, b);;) {
+    if(cljs.core.truth_(d)) {
+      var e = cljs.core.first.call(null, d);
+      c.overlayMapTypes.push(e);
+      d = cljs.core.next.call(null, d)
+    }else {
+      break
+    }
+  }
+  return c
 };
 contour.mapview._STAR_map_STAR_ = null;
-contour.mapview.mk = function() {
-  return contour.mapview._STAR_map_STAR_ = contour.mapview.init_map.call(null, goog.dom.getElement.call(null, "map_canvas"))
+contour.mapview.map_load = function() {
+  return contour.mapview._STAR_map_STAR_ = contour.mapview.init_map.call(null, goog.dom.getElement.call(null, "map_canvas"), cljs.core.Vector.fromArray([contour.mapview.mk_overlay.call(null, "species-range", contour.mapview.species_range_tile_url, 0.5), contour.mapview.mk_overlay.call(null, "forma", contour.mapview.forma_tile_url, 1), contour.mapview.mk_overlay.call(null, "iucn", contour.mapview.iucn_tile_url, 0.6), contour.mapview.mk_overlay.call(null, "cell-towers", contour.mapview.cell_towers_tile_url, 
+  1)]))
 };
-goog.exportSymbol("contour.mapview.mk", contour.mapview.mk);
 goog.events.listen.call(null, window, "load", contour.mapview.map_load);
