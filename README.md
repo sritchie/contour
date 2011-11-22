@@ -8,7 +8,7 @@ This project rides on [Noir](https://github.com/ibdknox/noir) and the new and wo
 
 To get started, you'll need the following tools
 
-* Leiningen (Build tool for clojure, located [on github](https://github.com/technomancy/leiningen)
+* Leiningen (Build tool for clojure, located [on github](https://github.com/technomancy/leiningen))
 * Clojurescript
 * [cljs-watch](https://github.com/ibdknox/cljs-watch)
 
