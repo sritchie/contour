@@ -12859,14 +12859,29 @@ contour.util.clj__GT_js = function clj__GT_js(b) {
 contour.repl = {};
 clojure.browser.repl.connect.call(null, "http://localhost:9000/repl");
 contour.mapview = {};
-contour.mapview.default_opts = cljs.core.ObjMap.fromObject(["\ufdd0'zoom", "\ufdd0'mapTypeId", "\ufdd0'center"], {"\ufdd0'zoom":8, "\ufdd0'mapTypeId":google.maps.MapTypeId.ROADMAP, "\ufdd0'center":new google.maps.LatLng(-34.397, 150.644)});
+contour.mapview.iucn_root = "http://184.73.201.235/blue/";
+contour.mapview.forma_root = "http://formatiles.s3.amazonaws.com/tiles/forma";
+contour.mapview.forma_tile_url = function(a, b) {
+  var c = Math.pow.call(null, 2, b);
+  return cljs.core.str.call(null, contour.mapview.forma_root, b, "/", Math.abs.call(null, a.x), "/", cljs.core._.call(null, c, a.y, 1), ".png")
+};
+contour.mapview.iucn_tile_url = function(a, b) {
+  return cljs.core.str.call(null, contour.mapview.iucn_root, b, "/", a.x, "/", a.y)
+};
+contour.mapview.overlay_defaults = cljs.core.ObjMap.fromObject(["\ufdd0'minZ", "\ufdd0'maxZ", "\ufdd0'tileSize"], {"\ufdd0'minZ":3, "\ufdd0'maxZ":10, "\ufdd0'tileSize":new google.maps.Size(256, 256)});
+contour.mapview.mk_overlay = function(a, b, c) {
+  a = contour.util.clj__GT_js.call(null, cljs.core.merge.call(null, contour.mapview.overlay_defaults, cljs.core.ObjMap.fromObject(["\ufdd0'name", "\ufdd0'opacity", "\ufdd0'getTileUrl"], {"\ufdd0'name":a, "\ufdd0'opacity":c, "\ufdd0'getTileUrl":b})));
+  return new google.maps.ImageMapType(a)
+};
+contour.mapview.map_opts = cljs.core.ObjMap.fromObject(["\ufdd0'zoom", "\ufdd0'mapTypeId", "\ufdd0'center"], {"\ufdd0'zoom":8, "\ufdd0'mapTypeId":google.maps.MapTypeId.ROADMAP, "\ufdd0'center":new google.maps.LatLng(-34.397, 150.644)});
 contour.mapview.init_map = function(a) {
-  var b = contour.util.clj__GT_js.call(null, contour.mapview.default_opts);
-  return new google.maps.Map(a, b)
+  var b = contour.util.clj__GT_js.call(null, contour.mapview.map_opts), a = new google.maps.Map(a, b), b = a.overlayMapTypes;
+  b.insertAt(0, contour.mapview.mk_overlay.call(null, "iucn", contour.mapview.iucn_tile_url, 0.5));
+  b.insertAt(1, contour.mapview.mk_overlay.call(null, "forma", contour.mapview.forma_tile_url, 1));
+  return a
 };
 contour.mapview._STAR_map_STAR_ = null;
 contour.mapview.map_load = function() {
   return contour.mapview._STAR_map_STAR_ = contour.mapview.init_map.call(null, goog.dom.getElement.call(null, "map_canvas"))
 };
-goog.exportSymbol("contour.mapview.map_load", contour.mapview.map_load);
 goog.events.listen.call(null, window, "load", contour.mapview.map_load);
