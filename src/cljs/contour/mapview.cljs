@@ -68,7 +68,8 @@
 
 (def map-opts
   "Default initial map options."
-  {:styles [{:stylers [{:visibility "on"}, {:lightness 80}]}]                          
+  {:styles [{:stylers [{:visibility "on"}
+                       {:lightness 80}]}]                          
    :zoom 3
    :mapTypeId google.maps.MapTypeId.ROADMAP
    :center (google.maps.LatLng. 29, 66)})
@@ -90,9 +91,9 @@
 (defn map-load []
   (set! *map* (init-map
                (goog.dom/getElement "map_canvas")
-               [(mk-overlay "species-range" species-range-tile-url 1)
+               [(mk-overlay "species-range" species-range-tile-url 0.5)
                 (mk-overlay "forma" forma-tile-url 1)
-                (mk-overlay "iucn" iucn-tile-url 0.5)
+                (mk-overlay "iucn" iucn-tile-url 0.6)
                 (mk-overlay "cell-towers" cell-towers-tile-url 1)])))
 
 ;; Callback!
