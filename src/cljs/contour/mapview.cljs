@@ -68,9 +68,10 @@
 
 (def map-opts
   "Default initial map options."
-  {:zoom 8
+  {:styles [{:stylers [{:visibility "on"}, {:lightness 80}]}]                          
+   :zoom 3
    :mapTypeId google.maps.MapTypeId.ROADMAP
-   :center (google.maps.LatLng. -34.397, 150.644)})
+   :center (google.maps.LatLng. 29, 66)})
 
 (defn init-map  [element overlays]
   (let [options (u/clj->js map-opts)
