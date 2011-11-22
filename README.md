@@ -21,3 +21,13 @@ Copyright (C) 2011 FIXME
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
+
+## TODO 
+
+* Add MarkerClusterer to externs.
+
+http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js
+
+* Read about what externs actually are :)
+* Redo robin's utils.
+
