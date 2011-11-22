@@ -13067,7 +13067,7 @@ contour.util.clj__GT_js = function clj__GT_js(b) {
 };
 contour.mapview = {};
 contour.mapview.iucn_root = "http://184.73.201.235/blue/";
-contour.mapview.forma_root = "http://formatiles.s3.amazonaws.com/tiles/forma";
+contour.mapview.forma_root = "http://formatiles.s3.amazonaws.com/tiles/forma/";
 contour.mapview.species_range_root = "https://eighty.cartodb.com/tiles/mol_cody/";
 contour.mapview.cell_towers_root = "https://sciencehackday-10.cartodb.com/tiles/tower_locations/";
 contour.mapview.cell_towers_tile_url = function(a, b) {

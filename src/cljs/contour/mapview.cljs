@@ -4,7 +4,7 @@
             [goog.style :as style]))
 
 (def iucn-root "http://184.73.201.235/blue/")
-(def forma-root "http://formatiles.s3.amazonaws.com/tiles/forma")
+(def forma-root "http://formatiles.s3.amazonaws.com/tiles/forma/")
 (def species-range-root "https://eighty.cartodb.com/tiles/mol_cody/")
 (def cell-towers-root "https://sciencehackday-10.cartodb.com/tiles/tower_locations/")
 
