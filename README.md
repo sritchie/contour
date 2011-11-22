@@ -59,8 +59,6 @@ And in the second:
     cljs-watch
 ```
 
-## Next Steps
-
 ## License
 
 Copyright (C) 2011 Sam Ritchie
