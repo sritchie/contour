@@ -12865,8 +12865,8 @@ contour.mapview.init_map = function(a) {
   return new google.maps.Map(a, b)
 };
 contour.mapview._STAR_map_STAR_ = null;
-contour.mapview.mk = function() {
+contour.mapview.map_load = function() {
   return contour.mapview._STAR_map_STAR_ = contour.mapview.init_map.call(null, goog.dom.getElement.call(null, "map_canvas"))
 };
-goog.exportSymbol("contour.mapview.mk", contour.mapview.mk);
+goog.exportSymbol("contour.mapview.map_load", contour.mapview.map_load);
 goog.events.listen.call(null, window, "load", contour.mapview.map_load);

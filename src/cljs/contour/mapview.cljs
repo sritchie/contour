@@ -14,7 +14,7 @@
 
 (def *map* nil)
 
-(defn ^:export mk []
+(defn ^:export map-load []
   (set! *map* (init-map
                (goog.dom/getElement
                 "map_canvas"))))
