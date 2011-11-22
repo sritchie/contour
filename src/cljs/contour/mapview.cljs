@@ -5,6 +5,21 @@
 
 (def iucn-root "http://184.73.201.235/blue/")
 (def forma-root "http://formatiles.s3.amazonaws.com/tiles/forma")
+(def species-range-root "https://eighty.cartodb.com/tiles/mol_cody/")
+(def cell-towers-root "https://sciencehackday-10.cartodb.com/tiles/tower_locations/")
+
+
+(defn cell-towers-tile-url [coord zoom]
+    (str cell-towers-root
+       zoom "/"
+       (.x coord) "/"
+       (.y coord) ".png"))
+
+(defn species-range-tile-url [coord zoom]
+    (str species-range-root
+       zoom "/"
+       (.x coord) "/"
+       (.y coord) ".png"))
 
 (defn forma-tile-url [coord zoom]
   (let [bound (Math/pow 2 zoom)]
@@ -43,8 +58,10 @@
   (let [options (u/clj->js map-opts)
         map (google.maps.Map. element options)]
     (doto (.overlayMapTypes map)
-      (. (insertAt 0 (mk-overlay "iucn" iucn-tile-url 0.5)))
-      (. (insertAt 1 (mk-overlay "forma" forma-tile-url 1))))
+      (. (insertAt 1 (mk-overlay "iucn" iucn-tile-url 0.5)))
+      (. (insertAt 2 (mk-overlay "forma" forma-tile-url 1)))
+      (. (insertAt 2 (mk-overlay "cell-towers" cell-towers-tile-url 1)))
+      (. (insertAt 0 (mk-overlay "species-range" species-range-tile-url 1))))
     map))
 
 ;; We don't really need to bind this to anything, but it helps to have
