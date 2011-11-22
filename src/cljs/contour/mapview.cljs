@@ -58,9 +58,9 @@
   (let [options (u/clj->js map-opts)
         map (google.maps.Map. element options)]
     (doto (.overlayMapTypes map)
-      (. (insertAt 1 (mk-overlay "iucn" iucn-tile-url 0.5)))
-      (. (insertAt 2 (mk-overlay "forma" forma-tile-url 1)))
-      (. (insertAt 2 (mk-overlay "cell-towers" cell-towers-tile-url 1)))
+      (. (insertAt 2 (mk-overlay "iucn" iucn-tile-url 0.5)))
+      (. (insertAt 1 (mk-overlay "forma" forma-tile-url 1)))
+      (. (insertAt 3 (mk-overlay "cell-towers" cell-towers-tile-url 1)))
       (. (insertAt 0 (mk-overlay "species-range" species-range-tile-url 1))))
     map))
 

@@ -13091,9 +13091,9 @@ contour.mapview.mk_overlay = function(a, b, c) {
 contour.mapview.map_opts = cljs.core.ObjMap.fromObject(["\ufdd0'zoom", "\ufdd0'mapTypeId", "\ufdd0'center"], {"\ufdd0'zoom":8, "\ufdd0'mapTypeId":google.maps.MapTypeId.ROADMAP, "\ufdd0'center":new google.maps.LatLng(-34.397, 150.644)});
 contour.mapview.init_map = function(a) {
   var b = contour.util.clj__GT_js.call(null, contour.mapview.map_opts), a = new google.maps.Map(a, b), b = a.overlayMapTypes;
-  b.insertAt(1, contour.mapview.mk_overlay.call(null, "iucn", contour.mapview.iucn_tile_url, 0.5));
-  b.insertAt(2, contour.mapview.mk_overlay.call(null, "forma", contour.mapview.forma_tile_url, 1));
-  b.insertAt(2, contour.mapview.mk_overlay.call(null, "cell-towers", contour.mapview.cell_towers_tile_url, 1));
+  b.insertAt(2, contour.mapview.mk_overlay.call(null, "iucn", contour.mapview.iucn_tile_url, 0.5));
+  b.insertAt(1, contour.mapview.mk_overlay.call(null, "forma", contour.mapview.forma_tile_url, 1));
+  b.insertAt(3, contour.mapview.mk_overlay.call(null, "cell-towers", contour.mapview.cell_towers_tile_url, 1));
   b.insertAt(0, contour.mapview.mk_overlay.call(null, "species-range", contour.mapview.species_range_tile_url, 1));
   return a
 };
