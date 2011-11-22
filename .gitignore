@@ -1,0 +1,22 @@
+build
+target
+out
+lib
+pom.xml
+# use glob syntax.
+syntax: glob
+*.class
+*.jar
+*~
+.DS_Store
+*.#*
+*#*
+*.classpath
+*.project
+*.settings
+*.dot
+.cake/
+.lein-failures
+.repl
+resources/public/cljs/*/
+.lein-deps-sum
