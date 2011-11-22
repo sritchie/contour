@@ -68,11 +68,11 @@
 
 (def map-opts
   "Default initial map options."
-  {:styles [{:stylers [{:visibility "on"}
-                       {:lightness 80}]}]                          
-   :zoom 3
+  {:zoom 3
    :mapTypeId google.maps.MapTypeId.ROADMAP
-   :center (google.maps.LatLng. 29, 66)})
+   :center (google.maps.LatLng. 29, 66)
+   :styles [{:stylers [{:visibility "on"}
+                       {:lightness 80}]}]})
 
 (defn init-map  [element overlays]
   (let [options (u/clj->js map-opts)
@@ -80,7 +80,6 @@
     (doseq [layer overlays]
       (.push (.overlayMapTypes map) layer))
     map))
-
 
 (def *map*
   "Dynamic variable holding our map element, set to an initial value
@@ -96,6 +95,5 @@
                 (mk-overlay "iucn" iucn-tile-url 0.6)
                 (mk-overlay "cell-towers" cell-towers-tile-url 1)])))
 
-;; Callback!
 (events/listen js/window "load"
                map-load)
