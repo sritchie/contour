@@ -76,7 +76,7 @@
   (let [options (u/clj->js map-opts)
         map (google.maps.Map. element options)]
     (doseq [layer overlays]
-      (. (.overlayMapTypes map) (push layer)))
+      (.push (.overlayMapTypes map) layer))
     map))
 
 
