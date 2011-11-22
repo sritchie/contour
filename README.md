@@ -11,6 +11,8 @@ lein run
 Run this in $CLOJURESCRIPT_HOME:
     svn checkout http://closure-compiler.googlecode.com/svn/trunk/ closure-compiler-read-only
 
+https://github.com/whizbangsystems/innovation-fund-js/blob/master/src/forma-data/static/config.js
+
 ## License
 
 Copyright (C) 2011 FIXME
