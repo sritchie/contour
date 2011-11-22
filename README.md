@@ -13,6 +13,8 @@ Run this in $CLOJURESCRIPT_HOME:
 
 https://github.com/whizbangsystems/innovation-fund-js/blob/master/src/forma-data/static/config.js
 
+More on Overlays:
+    http://code.google.com/apis/maps/documentation/javascript/overlays.html#CustomOverlays
 ## License
 
 Copyright (C) 2011 FIXME
