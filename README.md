@@ -41,7 +41,7 @@ The "Hello World" of Google Maps in ClojureScript looks like this:
 
     (defn init-map  [element overlays]
       (let [options (u/clj->js map-opts)
-            map (google.maps.Map. element options)]
+            map (google.maps.Map. element options)]))
 
     (defn map-load []
       (set! *map* (init-map
