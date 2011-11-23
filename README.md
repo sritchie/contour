@@ -102,6 +102,14 @@ Use two terminals. In the first:
     lein ring server    
 ```
 
+```clojure
+    (def x 2)
+```
+
+```clj
+    (def x 2)
+```
+
 And in the second:
 
 ```bash
