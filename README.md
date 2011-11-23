@@ -17,6 +17,7 @@ It also rides on the wonderful [ClojureScript](https://github.com/clojure/clojur
 
 Here's a side-by-side of JavaScript and ClojureScript. The "Hello World" of Google Maps in JavaScript looks like this: 
 
+```javascript
     var map;
 
     function initialize() {
@@ -29,9 +30,11 @@ Here's a side-by-side of JavaScript and ClojureScript. The "Hello World" of Goog
     }
     
     google.maps.event.addDomListener(window, 'load', initialize);
+```
 
 The "Hello World" of Google Maps in ClojureScript looks like this: 
-     
+
+```clojure
     (def *map* nil)
 
     (def map-opts
@@ -49,7 +52,7 @@ The "Hello World" of Google Maps in ClojureScript looks like this:
 
     (events/listen js/window "load"
                    map-load)
-
+```
 
 # Let's get started
 
@@ -100,14 +103,6 @@ Use two terminals. In the first:
     cd contour
     lein deps
     lein ring server    
-```
-
-```clojure
-    (def x 2)
-```
-
-```clj
-    (def x 2)
 ```
 
 And in the second:
