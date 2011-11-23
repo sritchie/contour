@@ -67,8 +67,11 @@ To get started, you'll need to install a few tools, but it's painless.
 
 Fire up your command line and:
 
+
+```bash
     git clone https://github.com/sritchie/contour.git
     cd contour
+```
 
 ## Leiningen
 
@@ -82,8 +85,10 @@ Next install Leiningen, the build tool for Clojure. These instructions are copie
 
 Next install ClojureScript. Pick a root directory (`rootdir`) where you want clojureScript to live and run the following commands:
 
+```bash
     cd contour # from above
     sh bootstrap.sh /path/to/rootdir
+```
 
 And then just follow the instructions at the end of the install.
 
@@ -91,9 +96,9 @@ And then just follow the instructions at the end of the install.
 
 Next install cljs-watch. This is a small script that watches your source directory for changes to clojureScript files. When it sees a change, it recompiles everything for live updates. Change your source, reload the browser, and you're set! The install is the same as for leiningen, just with a different script:
 
-* [Download the script.](https://github.com/ibdknox/cljs-watch/blob/master/cljs-watch)
+* [Download the script](https://github.com/ibdknox/cljs-watch/blob/master/cljs-watch) which is named `cljs-watch`.
 * Place it on your path. (I like to use `~/bin`)
-* Set it to be executable. (`chmod 755 ~/bin/lein`)
+* Set it to be executable. (`chmod 755 ~/bin/cljs-watch`)
 
 # Usage
 
