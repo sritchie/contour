@@ -37,16 +37,15 @@ The "Hello World" of Google Maps in ClojureScript looks like this:
 ```clojure
     (def *map* nil)
     
-    (defn init-map [element]
-      (google.maps.Map. element
-                        {"zoom" 8
-                         "mapTypeId" google.maps.MapTypeId.ROADMAP
-                         "center" (google.maps.LatLng. -34.397, 150.644)}))
-
+    (def my-opts
+      {"zoom" 8
+       "mapTypeId" google.maps.MapTypeId.ROADMAP
+       "center" (google.maps.LatLng. -34.397, 150.644)})
+    
     (defn map-load []
-      (set! *map* (init-map
-                  (goog.dom/getElement "map_canvas"))))
-
+      (let [elem (goog.dom/getElement "map_canvas")]
+        (set! *map* (google.maps.Map. elem my-opts))))
+    
     (events/listen js/window "load"
                    map-load)
 ```
