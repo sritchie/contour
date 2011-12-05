@@ -35,5 +35,5 @@ export PATH=$cljs_root/bin:\$PATH
 
 Running the following command will do the trick:
 
-echo \"export CLOJURESCRIPT_HOME=$cljs_root\\nexport PATH=$cljs_bin:\$PATH\" > ~/.bash_profile
+echo \"export CLOJURESCRIPT_HOME=$cljs_root\nexport PATH=$cljs_bin:\\\$PATH\" >> ~/.bash_profile
 "
