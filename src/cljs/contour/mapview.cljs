@@ -95,5 +95,4 @@
                 (mk-overlay "iucn" iucn-tile-url 0.6)
                 (mk-overlay "cell-towers" cell-towers-tile-url 1)])))
 
-(events/listen js/window "load"
-               map-load)
+(events/listen js/window "load" map-load)
