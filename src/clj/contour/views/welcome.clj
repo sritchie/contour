@@ -7,11 +7,8 @@
 (defpage "/" []
   (common/layout 
    (include-js "http://maps.googleapis.com/maps/api/js?sensor=false")
-   (include-js "cljs/bootstrap.js")
+   (include-js "/js/main.js")
    (when (dev-mode?)
      (javascript-tag "goog.require('contour.repl');"))
    (javascript-tag "goog.require('contour.mapview')")
    [:div#map_canvas]))
-
-
-

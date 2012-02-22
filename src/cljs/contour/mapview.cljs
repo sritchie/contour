@@ -24,7 +24,7 @@
   [root]
   {:pre [(not= "/" (last root))]} ;; contracts ftw!
   (fn [coord zoom]
-    (-> (u/pathify root zoom (.x coord) (.y coord))
+    (-> (u/pathify root zoom (. coord -x) (. coord -y))
         (str ".png"))))
 
 (def cell-towers-tile-url
@@ -36,7 +36,8 @@
 (defn iucn-tile-url
   "IUCN tiles don't use a .png extension, for whatever reason."
   [coord zoom]
-  (u/pathify iucn-root zoom (.x coord) (.y coord)))
+  (u/pathify iucn-root zoom (. coord -x) (. coord -y)))
+
 
 (defn forma-tile-url
   "Wacky shit with inversion of the y coordinate, etc"
@@ -44,8 +45,8 @@
   (let [bound (dec (Math/pow 2 zoom))]
     (-> (u/pathify forma-root
                    zoom
-                   (Math/abs (.x coord))
-                   (- bound (.y coord)))
+                   (Math/abs (. coord -x))
+                   (- bound (. coord -y)))
         (str ".png"))))
 
 (def overlay-defaults
@@ -76,9 +77,10 @@
 
 (defn init-map  [element overlays]
   (let [options (u/clj->js map-opts)
-        map (google.maps.Map. element options)]
+        map (google.maps.Map. element options)
+        overlayMapTypes (. map -overlayMapTypes)]
     (doseq [layer overlays]
-      (.push (.overlayMapTypes map) layer))
+      (.push overlayMapTypes layer))
     map))
 
 (def *map*
@@ -93,6 +95,7 @@
                [(mk-overlay "species-range" species-range-tile-url 0.5)
                 (mk-overlay "forma" forma-tile-url 1)
                 (mk-overlay "iucn" iucn-tile-url 0.6)
-                (mk-overlay "cell-towers" cell-towers-tile-url 1)])))
+                (mk-overlay "cell-towers" cell-towers-tile-url 1)
+                ])))
 
 (events/listen js/window "load" map-load)
