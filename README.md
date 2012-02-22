@@ -4,14 +4,16 @@ Contour is Google Maps v3 web app written entirely in ClojureScript! Very early 
 
 ![](http://i.imgur.com/c3yDI.png)
 
-
 # Overview
 
 Contour is Google Maps v3 web app written entirely in ClojureScript. In other words, it's awesome.
 
 The project rides on [Noir](https://github.com/ibdknox/noir), a framework for writing web applications in Clojure.
 
-It also rides on the wonderful [ClojureScript](https://github.com/clojure/clojurescript) project which is a compiler for Clojure that emits JavaScript code! For bonus points it's also compatible with the with the advanced compilation mode of [Google Closure](http://code.google.com/closure) optimizing compiler. 
+It also rides on [ClojureScript](https://github.com/clojure/clojurescript) which is a compiler for Clojure that emits JavaScript code! For bonus points it's also compatible with the with the advanced compilation mode of [Google Closure](http://code.google.com/closure) optimizing compiler. 
+
+But wait, there's more! As an extra bonus, Contour additionally rides on [lein-cljsbuild](https://github.com/emezeske/lein-cljsbuild), a leiningen plugin that makes it easy (and quick) to compile ClojureScript source into JavaScript.  It's similar to [cljs-watch](https://github.com/ibdknox/cljs-watch) but uses lein instead of a standalone executable.  
+
 
 # Show me CODE
 
@@ -52,68 +54,42 @@ The "Hello World" of Google Maps in ClojureScript looks like this:
 
 # Let's get started
 
-To get started, you'll need to install a few tools, but it's painless.
+To get started, you'll need to clone Contour and install [Leinigen](https://github.com/technomancy/leiningen), the build tool for Clojure.
 
-* Contour (this project)
-* Leiningen (Build tool for clojure, located [on github](https://github.com/technomancy/leiningen))
-* ClojureScript
-* [cljs-watch](https://github.com/ibdknox/cljs-watch)
-
-## Contour
+## Clone Contour
 
 Fire up your command line and:
 
 
 ```bash
-    git clone https://github.com/sritchie/contour.git
-    cd contour
+$ git clone https://github.com/sritchie/contour.git
+$ cd contour
 ```
 
-## Leiningen
+## Install Leiningen
 
-Next install Leiningen, the build tool for Clojure. These instructions are copied from the Leiningen README:
+Next install Leiningen:
 
 * [Download this script](https://raw.github.com/technomancy/leiningen/stable/bin/lein) which is named `lein`
 * Place it on your path so that you can execute it. (I like to use `~/bin`)
 * Set it to be executable. (`chmod 755 ~/bin/lein`)
 
-## ClojureScript
-
-Next install ClojureScript. Pick a root directory (`rootdir`) where you want clojureScript to live and run the following commands:
-
-```bash
-    cd contour # from above
-    sh bootstrap.sh /path/to/rootdir
-```
-
-And then just follow the instructions at the end of the install.
-
-## cljs-watch
-
-Next install cljs-watch. This is a small script that watches your source directory for changes to clojureScript files. When it sees a change, it recompiles everything for live updates. Change your source, reload the browser, and you're set! The install is the same as for leiningen, just with a different script:
-
-* [Download the script](https://github.com/ibdknox/cljs-watch/blob/master/cljs-watch) which is named `cljs-watch`.
-* Place it on your path. (I like to use `~/bin`)
-* Set it to be executable. (`chmod 755 ~/bin/cljs-watch`)
-
 # Usage
 
-Use two terminals. In the first:
-
 ```bash
-    cd contour
-    lein deps
-    lein ring server    
+$ cd contour
+
+# Download the dependencies:
+$ lein deps
+
+# Open a new terminal window and:
+$ lein cljsbuild auto 
+
+# Open a new terminal window and: 
+$ lein ring server 
 ```
 
-And in the second:
-
-```bash
-    cd contour
-    cljs-watch
-```
-
-Access [127.0.0.1:3000](127.0.0.1:3000) and your golden!
+That should open a browser window at [127.0.0.1:3000](127.0.0.1:3000). You're all set!
 
 # License
 
