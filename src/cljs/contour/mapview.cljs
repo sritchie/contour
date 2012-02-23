@@ -95,7 +95,6 @@
                [(mk-overlay "species-range" species-range-tile-url 0.5)
                 (mk-overlay "forma" forma-tile-url 1)
                 (mk-overlay "iucn" iucn-tile-url 0.6)
-                (mk-overlay "cell-towers" cell-towers-tile-url 1)
-                ])))
+                (mk-overlay "cell-towers" cell-towers-tile-url 1)])))
 
 (events/listen js/window "load" map-load)
