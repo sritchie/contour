@@ -20,5 +20,6 @@ syntax: glob
 .repl
 resources/public/cljs/*/
 .lein-deps-sum
-.clojurescript-output
-.lein-plugins
+.clojurescript-output*
+.lein-cljsbuild-compiler-0
+.lein-plugins*
