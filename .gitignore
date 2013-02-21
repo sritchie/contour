@@ -18,8 +18,10 @@ syntax: glob
 .cake/
 .lein-failures
 .repl
-resources/public/cljs/*/
+resources/public/js/*
 .lein-deps-sum
 .clojurescript-output*
 .lein-cljsbuild-compiler-0
 .lein-plugins*
+.repl-phantom*
+repl
